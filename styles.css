@@ -1,0 +1,825 @@
+body {
+  background-color: rgb(0, 0, 0);
+  font-family: "Montserrat", sans-serif;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+/* Loader wrapper */
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Loader */
+.loader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  animation: pulsOut 1.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.75));
+}
+
+.loader:before {
+  width: 100%;
+  padding-bottom: 100%;
+  box-shadow: inset 0 0 0 1rem #fff;
+  animation-name: pulsIn;
+}
+
+.loader:after {
+  width: calc(100% - 2rem);
+  padding-bottom: calc(100% - 2rem);
+  box-shadow: 0 0 0 0 #fff;
+}
+
+@keyframes pulsIn {
+  0% {
+    box-shadow: inset 0 0 0 1rem #fff;
+    opacity: 1;
+  }
+  50%,
+  100% {
+    box-shadow: inset 0 0 0 0 #fff;
+    opacity: 0;
+  }
+}
+
+@keyframes pulsOut {
+  0%,
+  50% {
+    box-shadow: 0 0 0 0 #fff;
+    opacity: 0;
+  }
+  100% {
+    box-shadow: 0 0 0 1rem #fff;
+    opacity: 1;
+  }
+}
+/* Estilo del botón */
+#scrollButton {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: none; /* Oculto inicialmente */
+}
+
+/* Opcional: Efecto de desvanecimiento */
+#scrollButton.fade-in {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Contenedor para fijar la navbar */
+.rd-share {
+  display: flex !important;
+}
+.rd-share img {
+  margin-left: 1rem;
+}
+.rd-share img:hover {
+  transform: scale(1.2);
+  transition: 0.3s linear;
+}
+.banner {
+  background-image: url(img-inicio/volantis-banner.webp);
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+}
+@media (max-width: 600px) {
+  .banner {
+    height: 680px;
+  }
+}
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 20;
+}
+
+.banner-content h1 {
+  font-size: 3rem;
+}
+@media (max-width: 600px) {
+  .banner-content {
+    width: 100%;
+  }
+}
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+@media (max-width: 600px) {
+  .banner::before {
+    height: 680px;
+  }
+}
+.fixed-navbar-container {
+  background-color: transparent;
+}
+.container-fluid {
+  background-color: #00000075;
+}
+
+.navbar {
+  top: 0;
+  width: 100%;
+  z-index: 1000 !important;
+  transition: top 0.3s; /* Transición suave al mostrar/ocultar */
+  background-color: transparent !important;
+}
+@media (max-width: 600px) {
+  .navbar {
+    position: fixed !important;
+  }
+}
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed !important;
+  }
+}
+@media (max-width: 988px) {
+  .navbar {
+    position: fixed !important;
+  }
+}
+.nav-link {
+  color: white;
+}
+.navbar-nav {
+  width: 100% !important;
+  display: flex !important;
+  min-height: auto !important;
+  justify-content: center !important;
+}
+.nav-link:hover {
+  color: #38b6ff;
+}
+@media (max-width: 600px) {
+  .nav-link:hover {
+    color: white !important;
+  }
+}
+.navbar-toggler {
+  background-color: #e2e2e2b2;
+}
+
+.active {
+  color: #38b6ff !important;
+}
+.logo {
+  width: 70px;
+}
+@media (max-width: 600px) {
+  .logo {
+  }
+}
+.dropdown-menu {
+  background-color: #000000;
+}
+
+@media (max-width: 600px) {
+  .navbar-collapse {
+    background-color: rgb(0, 0, 0);
+    border-radius: 20px;
+    padding: 10px;
+  }
+  .dropdown-menu {
+    position: relative;
+    background-color: #000000 !important;
+  }
+}
+.dropdown-item {
+  color: white;
+}
+
+.title-menu {
+  color: #38b6ff;
+  text-align: center;
+  margin: 10px;
+}
+.title-menu:hover {
+  color: white;
+  transition: 0.2s linear;
+}
+/* fin */
+
+/* FIRMA VOLANTIS */
+.container {
+  background-color: #000000;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.firma-conte {
+  display: flex;
+  min-height: auto;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+}
+@media (max-width: 600px) {
+  .firma-conte img {
+    width: 300px;
+    height: 100px;
+    margin-right: 350px;
+  }
+}
+@media (max-width: 768px) {
+  .firma-conte img {
+    width: 300px;
+    height: 100px;
+    margin-right: 350px;
+  }
+}
+@media (max-width: 1024px) {
+  .firma-conte img {
+    width: 300px;
+    height: 100px;
+    margin-right: 350px;
+  }
+}
+.firma-conte p {
+  text-align: center;
+  width: 50%;
+  color: white;
+}
+
+.container a {
+  padding: 10px;
+  background-color: #c1e8ff;
+  border-radius: 20px;
+  color: #000000;
+  margin-top: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+.container a:hover {
+  transition: 0.2s linear;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  transform: scale(1.02);
+}
+/* FIN FIRMA */
+
+/* SECTION SERVICIOS */
+.container-servicios {
+  padding: 20px;
+}
+.card {
+  background-color: #0c0c0c;
+}
+
+.div-img {
+  display: flex;
+  min-height: auto;
+  justify-content: center;
+}
+.card-title,
+.card-text {
+  color: white;
+}
+.img-d {
+  width: 100px;
+}
+.viw-more {
+  padding: 0.6rem;
+  color: white;
+  border-radius: 50px;
+  border: solid white 1px;
+}
+.viw-more:hover {
+  border: none;
+  background-color: #38b6ff;
+  transition: 0.3s linear;
+}
+/* CUADROS , SERVICIOS */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: -50px;
+  padding: 100px;
+}
+@media (max-width: 600px) {
+  .flex-container {
+    padding: 0px;
+  }
+}
+.flex-container div {
+  height: 300px;
+  background-color: #144059e3;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.flex-container div:hover {
+  transition: 0.2s linear;
+
+  transform: scale(1.02);
+  background-color: #000000;
+  color: white;
+}
+
+.text {
+  font-size: 20px;
+}
+.flex-container p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+.flex-container a {
+  border-radius: 20px;
+}
+.flex1 {
+  margin: 5px;
+  padding: 10px;
+  flex: 40%;
+  color: white;
+  border-radius: 20px;
+}
+.flex1 a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  background: #c1e8ff;
+  padding: 16px 37px;
+  display: inline-block;
+  border-radius: 50px;
+}
+.flex1 a:hover {
+  transition: 0.2s linear;
+
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+.flex1 p {
+  margin-bottom: 100px;
+}
+
+.flex2 {
+  border-radius: 20px;
+  margin: 5px;
+  color: white;
+  padding: 10px;
+  flex: 40%;
+}
+.flex2 a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  background: #c1e8ff;
+  padding: 16px 37px;
+  display: inline-block;
+  border-radius: 50px;
+}
+.flex2 a:hover {
+  transition: 0.2s linear;
+
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.flex2 p {
+  margin-bottom: 80px;
+}
+.flex3 {
+  border-radius: 20px;
+  margin: 5px;
+  color: white;
+  padding: 10px;
+  flex: 40%;
+}
+.flex3 a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  background: #c1e8ff;
+  padding: 16px 37px;
+  display: inline-block;
+  border-radius: 50px;
+}
+.flex3 a:hover {
+  transition: 0.2s linear;
+
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.flex3 p {
+  margin-bottom: 80px;
+}
+.flex4 {
+  border-radius: 20px;
+  margin: 5px;
+  color: white;
+  padding: 10px;
+  flex: 40%;
+}
+.flex4 a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  background: #c1e8ff;
+  padding: 16px 37px;
+  display: inline-block;
+  border-radius: 50px;
+}
+.flex4 a:hover {
+  transition: 0.2s linear;
+
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.flex4 p {
+  margin-bottom: 116px;
+}
+@media (max-width: 600px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+/* FIN VISTA SERVICIOS */
+
+/* SECCION PORQUE VOLANTIS */
+.containerr {
+  padding-bottom: 200px;
+  padding-top: 200px;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+@media (max-width: 600px) {
+  .containerr {
+    flex-direction: column;
+  }
+}
+
+.container-volant {
+  background-color: #f8f8f8;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  flex: 50%;
+  display: flex;
+  width: 600px;
+  height: 430px;
+}
+.container-volant img {
+  width: 0px;
+  flex-grow: 1;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+.container-volant img:hover {
+  transition: 0.2s linear;
+  cursor: crosshair;
+  width: 300px;
+  opacity: 1;
+  filter: contrast(120%);
+}
+@media (max-width: 600px) {
+  .container-volant img {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .container-volant {
+    width: 400px;
+  }
+}
+@media (max-width: 768px) {
+  .container-volant {
+    width: 400px;
+  }
+}
+.container-volant2 {
+  margin-right: 20px;
+  color: rgb(0, 0, 0);
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (max-width: 988px) {
+  .container-volant2 {
+    margin-top: 30px;
+  }
+}
+.container-volant2 h1 {
+  margin-bottom: 10px;
+  text-align: right;
+}
+@media (max-width: 768px) {
+  .title-volant2 {
+    text-align: center;
+  }
+}
+.container-volant2 p {
+  text-align: right;
+}
+.btn-a {
+  text-align: right;
+}
+.btn-a,
+a {
+  text-decoration: none;
+}
+.btn-a a:hover {
+  background-color: #a3dafa;
+  transition: 0.2s linear;
+  color: #000000;
+}
+.container-volant2 a {
+  margin-top: 20px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  background: #c1e8ff;
+  padding: 16px 37px;
+  display: inline-block;
+  border-radius: 50px;
+}
+
+@media (max-width: 600px) {
+  .container-volant2 p {
+    text-align: center;
+  }
+  .container-volant2 h1 {
+    text-align: center;
+  }
+  .btn-a {
+    text-align: center;
+  }
+}
+/* FIN SECCION PORQUE VOLANTIS */
+
+/* SECCION DESARROLLO unico */
+.container2 {
+  padding: 150px 0 150px 0;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+.develop1 {
+  flex: 50%;
+}
+.develop1 h1 {
+  font-size: 3rem;
+}
+.develop1 p {
+  font-size: 3rem;
+  color: rgb(66, 66, 66);
+  margin-left: 50px;
+}
+.text-p {
+  flex: 50%;
+}
+.contact {
+  border-radius: 40px;
+  padding: 10px;
+  background-color: #c1e8ff;
+  margin-top: 30px;
+}
+.text-p a {
+  margin-left: 30px;
+  color: #000000;
+}
+.text-p a:hover {
+  transition: 0.2x linear;
+}
+.contact:hover {
+  background-color: #a8dfff;
+  transition: 0.2s linear;
+}
+@media (max-width: 600px) {
+  .container2 {
+    flex-direction: column;
+  }
+  .text-p {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .contact {
+    width: 100%;
+  }
+  .develop1 {
+    padding: 0px;
+    padding: 0px;
+  }
+}
+@media (max-width: 768px) {
+  .container2 {
+    flex-direction: column;
+  }
+  .text-p {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .contact {
+    width: 100%;
+  }
+}
+@media (max-width: 1280px) {
+  .container2 {
+    flex-direction: column;
+  }
+  .text-p {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .contact {
+    width: 100%;
+  }
+}
+/* FIN  */
+
+/* SECTION , TESTIMONIOS  */
+.heading-testing {
+  text-align: center;
+  background-color: white;
+  padding: 50px;
+}
+.section-testimonion {
+  background-color: #ffffff;
+}
+
+.container-testimonios {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px;
+}
+@media (max-width: 1604px) {
+  .container-testimonios {
+    flex-direction: column;
+  }
+  .section-card1 {
+    display: flex;
+    min-height: auto;
+    justify-content: center;
+  }
+}
+.card {
+  border: none;
+  background-color: rgb(54, 54, 54);
+}
+.card:hover {
+  background-color: #38b6ff;
+  transform: scale(1.04);
+  transition: 0.3s ease-out;
+}
+
+.card-title,
+.card-text {
+  color: rgb(255, 255, 255);
+}
+.text-body-secondary {
+  color: #afe2ff !important;
+}
+/* FIN SECTION TESTIMONIOS */
+
+/* SECTION PROYECT */
+.proyect {
+  padding: 30px;
+  background-image: url(img-inicio/manos.png);
+  width: 100%;
+  height: 600px;
+  background-position: center;
+  background-size: cover;
+}
+
+.manos {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+.hu__hu__ {
+  animation: hu__hu__ infinite 2s ease-in-out;
+}
+@keyframes hu__hu__ {
+  50% {
+    transform: translateY(30px);
+  }
+}
+/* FIN */
+
+/* FOOTER */
+footer {
+  background-color: #000000;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  color: white;
+}
+.foot li {
+  margin: 10px;
+  padding: 5px;
+  list-style: none;
+}
+.foot a:hover {
+  transition: 0.2s linear;
+  color: #38b6ff;
+}
+.foot a {
+  color: white;
+}
+.foot {
+  flex: 50%;
+}
+#volantis-fot {
+  cursor: pointer;
+  width: 400px;
+  position: relative;
+  top: 60px;
+}
+@media (max-width: 600px) {
+  #volantis-fot {
+    top: 0px;
+    width: 350px;
+  }
+}
+@media (max-width: 1024px) {
+  #volantis-fot {
+    top: 0px;
+  }
+}
+#red1 {
+  width: 50px;
+  background-color: white;
+  margin-top: 30px;
+  border-radius: 50px;
+}
+#red1:hover {
+  background-color: #38b6ff;
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: 0.2s linear;
+}
+
+@media (max-width: 600px) {
+  footer {
+    text-align: center;
+    flex-direction: column;
+  }
+}
+@media (max-width: 1024px) {
+  footer {
+    text-align: center;
+    flex-direction: column;
+  }
+}
